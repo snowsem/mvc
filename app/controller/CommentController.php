@@ -14,16 +14,23 @@ use App\View;
 class CommentController extends Controller {
 
     public function create() {
-        echo 'post';
-        #var_dump($_POST);
-        var_dump(Request::$post_params);
-        print Request::$post_params->name;
-        #$comment = model('model_name');
         $comment = model('Comment');
+        $array = array(
+            'c_author' => Request::$post_params->name,
+            'c_email' => Request::$post_params->email,
+            'c_text' => Request::$post_params->text
+
+        );
+        if ($comment->create($array)) {
+            header('Location: '.'/');
+        } else {
+            echo 'error';
+        }
 
     }
 
     public function edit() {
+
 
     }
 

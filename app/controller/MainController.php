@@ -15,14 +15,9 @@ class MainController extends Controller {
     public function index() {
 
         #var_dump(Request::$params);
-
         $comments = model('Comment');
         //var_dump($comments->get_all_record());
-
         return new View('main/index', ['comments'=>$comments->get_all_record()]);
-
-
-
 
     }
 

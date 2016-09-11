@@ -10,6 +10,7 @@ use App\Model;
 
 class CommentModel extends Model {
 
+
     public function get_all_record() {
 
         $sql = "SELECT * FROM comments";
@@ -33,6 +34,17 @@ class CommentModel extends Model {
     }
 
     public function get_all_record_date(){
+
+    }
+
+    public function create($params) {
+        $c_author = $params['c_author'];
+        $c_text = $params['c_text'];
+        $c_email = $params['c_email'];
+        $c_date =  date("Y-m-d H:i:s");
+        $query = "INSERT INTO comments (c_author, c_email, c_text, c_date) VALUES ('$c_author', '$c_email', '$c_text', '$c_date')";
+        return DB::query($query);
+
 
     }
 

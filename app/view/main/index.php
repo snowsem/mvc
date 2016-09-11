@@ -40,8 +40,8 @@
                             email: true
                         },
                         text: {
-                            required: true,
-                            email: true
+                            required: true
+
                         }
                     },
                     messages: {
@@ -64,7 +64,7 @@
 
                     },
                     onkeyup: function(element) {
-                        $(".js-form-message").text("");
+
                     },
                     errorPlacement: function(error, element) {
                         return true;
