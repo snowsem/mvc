@@ -129,7 +129,7 @@
             </a>
             <div class="comment-body">
                 <div class="comment-heading">
-                <h5 class="time">'.$c['c_date'].'</h5>  | <span><a href="edit">Редактировать</a></span> | <span>'.$pub.'</span>
+                <h5 class="time">'.$c['c_date'].'</h5>  | <span><a href="/comment/edit/'.$c['c_id'].'">Редактировать</a></span> | <span>'.$pub.'</span>
                 
                 <br>
                     <h4 class="user">'.$c['c_author'].'</h4><br>

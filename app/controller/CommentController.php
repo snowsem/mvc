@@ -30,6 +30,18 @@ class CommentController extends Controller {
     }
 
     public function edit() {
+        $comment = model('Comment');
+
+        return new View('comment/edit', ['comment'=>$comment->get_by_id(Request::$params[0])]);
+
+
+    }
+
+    public function edit_post() {
+        $comment = model('Comment');
+        $comment->edit();
+        //return new View('comment/edit', ['comment'=>$comment->get_by_id(Request::$params[0])]);
+         header('Location: '.'/');
 
 
     }
