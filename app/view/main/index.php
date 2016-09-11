@@ -96,30 +96,34 @@
 
 <div class="container">
     <ul class="comments-list">
-        <li class="comment">
+        <?php
+
+        if(isset($comments)) {
+
+            var_dump($comments);
+            foreach ($comments as $c) {
+
+                echo '<li class="comment">
             <a class="pull-left" href="#">
                 <img class="avatar" src="/public/user_3.jpg" alt="avatar">
             </a>
             <div class="comment-body">
                 <div class="comment-heading">
-                    <h4 class="user">Пятницкий Семен</h4>
-                    <h5 class="time">11.09.2016 в 12:11</h5>
+                    <h4 class="user">'.$c['c_author'].'</h4>
+                    <h5 class="time">'.$c['c_date'].'</h5>
                 </div>
-                <p>Реализация MVC<br>fdasfa<br>fdasfa</p>
+                <p>'.$c['c_text'].'</p>
             </div>
-        </li>
-        <li class="comment">
-            <a class="pull-left" href="#">
-                <img class="avatar" src="/public/user_3.jpg" alt="avatar">
-            </a>
-            <div class="comment-body">
-                <div class="comment-heading">
-                    <h4 class="user">Пятницкий Семен</h4>
-                    <h5 class="time">11.09.2016 в 12:11</h5>
-                </div>
-                <p>Реализация MVC зация MVC зация MVC зация MVCзация MVCзация MVCзация MVCзация MVCзация MVCзация MVCзация MVCзация MVCзация MVCзация MVCзация MVCзация MVCзация MVCзация MVCзация MVC<br>fdasfa<br>fdasfa</p>
-            </div>
-        </li>
+        </li>';
+            }
+        }
+        else {
+            print "error";
+            }
+
+
+        ?>
+
         </ul>
 
 

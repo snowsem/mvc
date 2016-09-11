@@ -26,9 +26,16 @@ function model($model_name) {
     }
 
 }
+
+
+
 require_once CORE_PATH.DS."core.php";
+require_once CORE_PATH.DS."db.php";
 require_once CORE_PATH.DS."router.php";
+
+DB::run();
 Router::run();
+
 #еще не разобрался как в неймспейс добавить модель
 #буду пока дергать функцию загруки модели)
 
