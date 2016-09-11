@@ -66,7 +66,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="well bs-component background-white">
-                    <form class="form-horizontal" method="post" action="/comment/add">
+                    <form class="form-horizontal" method="post" action="/comment/create">
                         <fieldset>
                             <legend><h4>Оставить отзыв</h4></legend>
                             <div class="form-group">

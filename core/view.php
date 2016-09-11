@@ -30,7 +30,6 @@ class View
 
                 Core::error_load_view($template);
 
-
             }
 
     }

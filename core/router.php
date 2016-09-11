@@ -30,10 +30,6 @@ class Router
             }
         }
 
-
-
-
-
         if (!empty($route['controller']))
         {
             self::$controller = $route['controller'];
@@ -64,8 +60,10 @@ class Router
         {
             \App\Request::$route = $route;
             \App\Request::$params = (!empty($route['params'])) ? $route['params'] : NULL;
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                \App\Request::$post_params = (!empty($_POST)) ? (object) $_POST : NULL;
 
-
+            }
             call_user_func(array($controller, $action));
         }
         else
