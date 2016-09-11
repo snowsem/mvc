@@ -6,6 +6,7 @@
  * Time: 13:23
  */
 
+
 namespace App;
 require_once "controller.php";
 require_once "view.php";
