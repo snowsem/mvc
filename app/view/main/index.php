@@ -16,6 +16,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="/public/css/bootstrap.css" media="screen">
     <link rel="stylesheet" href="/public/css/custom.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="/public/js/bootstrap.min.js"></script>
+
+    <script src="/public/valid.js" type="text/javascript"></script>
+
+
+
+
+
+    <script>
+        $(document).ready(function() {
+            $('form button[type="submit"]').on('click', function () {
+
+                $("#form").validate({
+
+                    rules: {
+                        name: {
+                            required: true
+                        },
+                        email: {
+                            required: true,
+                            email: true
+                        },
+                        text: {
+                            required: true,
+                            email: true
+                        }
+                    },
+                    messages: {
+                        name: {
+                            required: "Поле Имя обязательное для заполнения"
+                        },
+                        email: {
+                            required: "Поле E-mail обязательное для заполнения",
+                            email: "Введите пожалуйста корректный e-mail"
+                        },
+                        text: {
+                            required: "Поле Имя обязательное для заполнения"
+                        }
+                    },
+                    focusCleanup: true,
+                    focusInvalid: false,
+                    errorLabelContainer: ".js-form-message", wrapper: "li",
+
+                    invalidHandler: function(event, validator) {
+
+                    },
+                    onkeyup: function(element) {
+                        $(".js-form-message").text("");
+                    },
+                    errorPlacement: function(error, element) {
+                        return true;
+                    },
+                    errorClass: "form-input_error",
+                    validClass: "form-input_success"
+                });
+
+
+                //$(this).parents('form').submit();
+            });
+        });
+    </script>
+
 
 
 
@@ -35,7 +98,7 @@
     <ul class="comments-list">
         <li class="comment">
             <a class="pull-left" href="#">
-                <img class="avatar" src="http://bootdey.com/img/Content/user_3.jpg" alt="avatar">
+                <img class="avatar" src="/public/user_3.jpg" alt="avatar">
             </a>
             <div class="comment-body">
                 <div class="comment-heading">
@@ -47,7 +110,7 @@
         </li>
         <li class="comment">
             <a class="pull-left" href="#">
-                <img class="avatar" src="http://bootdey.com/img/Content/user_3.jpg" alt="avatar">
+                <img class="avatar" src="/public/user_3.jpg" alt="avatar">
             </a>
             <div class="comment-body">
                 <div class="comment-heading">
@@ -66,9 +129,10 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="well bs-component background-white">
-                    <form class="form-horizontal" method="post" action="/comment/create">
+                    <form id="form" class="form-horizontal" method="post" action="/comment/create">
                         <fieldset>
                             <legend><h4>Оставить отзыв</h4></legend>
+                            <p class="js-form-message"></p>
                             <div class="form-group">
 
                                 <div class="col-lg-10">
@@ -78,7 +142,7 @@
                             <div class="form-group">
 
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control input-sm" id="inputEmail" name="E-mail" placeholder="E-mail">
+                                    <input type="text" class="form-control input-sm" id="inputEmail" name="email" placeholder="E-mail">
                                 </div>
                             </div>
 
@@ -113,17 +177,6 @@
     ================================================== -->
 
 
-
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="/public/js/bootstrap.min.js"></script>
-
-    <script src="/public/js/bootstrap-typeahead.js" type="text/javascript"></script>
-    <script src="/public/js/typeahead.js" type="text/javascript"></script>
-    <script src="/public/js/jquery.mockjax.js" type="text/javascript"></script>
-    <script src="/public/js/jquery.mask.min.js" type="text/javascript"></script>
-
-
-</div>
 
 
 

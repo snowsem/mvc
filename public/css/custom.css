@@ -54,3 +54,10 @@
 .comments-list .comment > .comments-list {
     margin-left: 50px;
 }
+.form-input_error {
+    border-color: #bd0021;
+
+}
+.form-input_success {
+    border-color: #00bd1c;
+}

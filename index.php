@@ -13,6 +13,7 @@ $core_path = realpath(dirname(__FILE__) . DS);
 
 define('APP_PATH',  $core_path.'/app');
 define('MODEL_PATH',  $core_path.'/app/model');
+define('CONFIG_PATH', $core_path.'/config');
 
 define ('CORE_PATH', $core_path.'/core');
 

@@ -15,10 +15,9 @@ require_once "Request.php";
 
 
 
-class Core {
-    public static function core_run() {
 
-    }
+class Core {
+
 
     public static function error_load_controller($controller_name = '') {
         exit("Не найден файл контроолера "  . $controller_name);
