@@ -13,7 +13,11 @@ require_once "model.php";
 require_once "Request.php";
 
 
+
 class Core {
+    public static function core_run() {
+
+    }
 
     public static function error_load_controller($controller_name = '') {
         exit("Не найден файл контроолера "  . $controller_name);
@@ -23,6 +27,9 @@ class Core {
     }
     public static function error_load_view($view_name = '') {
         exit("Не найден шаблон "  . $view_name);
+    }
+    public static function error_load_model($model_name = '') {
+        exit("Не найден модель "  . $model_name);
     }
 
 

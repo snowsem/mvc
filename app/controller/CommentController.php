@@ -10,12 +10,19 @@ use App\Controller;
 use App\Request;
 use App\View;
 
+
 class CommentController extends Controller {
+
     public function create() {
         echo 'post';
         #var_dump($_POST);
         var_dump(Request::$post_params);
         print Request::$post_params->name;
+        #$comment = model('model_name');
+        $comment = model('Comment');
+
     }
 
+
 }
+

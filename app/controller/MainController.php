@@ -18,11 +18,9 @@ class MainController extends Controller {
 
         return new View('main/index', ['var_name'=>'value']);
 
-    }
-    public function create() {
-        echo "POST";
 
     }
+
 
 
 }
