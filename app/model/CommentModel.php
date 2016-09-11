@@ -13,7 +13,19 @@ class CommentModel extends Model {
 
     public function get_all_record() {
 
-        $sql = "SELECT * FROM comments ORDER BY c_date DESC";
+        $sql = "SELECT * FROM comments WHERE c_published = 1  ORDER BY c_date DESC ";
+        $result = DB::query($sql);
+        $array = array();
+        while($u = mysqli_fetch_assoc($result)) {
+            $array[] = $u;
+        }
+        return $array;
+
+
+    }
+    public function get_all_record_not_pub() {
+
+        $sql = "SELECT * FROM comments   ORDER BY c_date DESC ";
         $result = DB::query($sql);
         $array = array();
         while($u = mysqli_fetch_assoc($result)) {
@@ -25,7 +37,7 @@ class CommentModel extends Model {
     }
 
     public function get_all_record_author(){
-        $sql = "SELECT * FROM comments ORDER BY c_author";
+        $sql = "SELECT * FROM comments WHERE c_published = 1 ORDER BY c_author";
         $result = DB::query($sql);
         $array = array();
         while($u = mysqli_fetch_assoc($result)) {
@@ -36,7 +48,7 @@ class CommentModel extends Model {
     }
 
     public function get_all_record_mail(){
-        $sql = "SELECT * FROM comments ORDER BY c_email";
+        $sql = "SELECT * FROM comments WHERE c_published = 1 ORDER BY c_email";
         $result = DB::query($sql);
         $array = array();
         while($u = mysqli_fetch_assoc($result)) {
@@ -47,7 +59,7 @@ class CommentModel extends Model {
     }
 
     public function get_all_record_date(){
-        $sql = "SELECT * FROM comments ORDER BY c_date";
+        $sql = "SELECT * FROM comments WHERE c_published = 1 ORDER BY c_date";
         $result = DB::query($sql);
         $array = array();
         while($u = mysqli_fetch_assoc($result)) {

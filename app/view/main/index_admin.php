@@ -109,6 +109,10 @@
 
 
 <div class="container">
+    <ul class="nav nav-pills">
+
+
+    </ul>
     <ul class="comments-list">
         <?php
 
@@ -116,6 +120,8 @@
 
             //var_dump($comments);
             foreach ($comments as $c) {
+                $pub = ($c['c_published'] == 1 ? 'Опубликован' : 'Не опубликован');
+
 
                 echo '<li class="comment">
             <a class="pull-left" href="#">
@@ -123,8 +129,12 @@
             </a>
             <div class="comment-body">
                 <div class="comment-heading">
-                    <h4 class="user">'.$c['c_author'].'</h4>
-                    <h5 class="time">'.$c['c_date'].'</h5>
+                <h5 class="time">'.$c['c_date'].'</h5>  | <span><a href="edit">Редактировать</a></span> | <span>'.$pub.'</span>
+                
+                <br>
+                    <h4 class="user">'.$c['c_author'].'</h4><br>
+                     <span>'.$c['c_email'].'</span>
+                    
                 </div>
                 <p>'.$c['c_text'].'</p>
             </div>

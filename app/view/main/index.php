@@ -139,8 +139,10 @@
             </a>
             <div class="comment-body">
                 <div class="comment-heading">
-                    <h4 class="user">'.$c['c_author'].'</h4>
-                    <h5 class="time">'.$c['c_date'].'</h5>
+                <h5 class="time">'.$c['c_date'].'</h5><br>
+                    <h4 class="user">'.$c['c_author'].'</h4><br>
+                     <span>'.$c['c_email'].'</span>
+                    
                 </div>
                 <p>'.$c['c_text'].'</p>
             </div>

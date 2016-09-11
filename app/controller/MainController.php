@@ -18,7 +18,7 @@ class MainController extends Controller {
         $comments = model('Comment');
         //var_dump($comments->get_all_record());
         if (Auth::is_auth() == true) {
-            return new View('main/index_admin', ['comments'=>$comments->get_all_record()]);
+            return new View('main/index_admin', ['comments'=>$comments->get_all_record_not_pub()]);
         } else {
             return new View('main/index', ['comments'=>$comments->get_all_record()]);
         }
@@ -34,7 +34,8 @@ class MainController extends Controller {
         if (Auth::is_auth() == true) {
             return new View('main/index_admin', ['comments'=>$comments->get_all_record_author()]);
         } else {
-            return new View('main/index', ['comments'=>$comments->get_all_record_author()]);
+            //return new View('main/index', ['comments'=>$comments->get_all_record_author()]);
+            header('Location: '.'/');
         }
 
 
@@ -48,7 +49,8 @@ class MainController extends Controller {
         if (Auth::is_auth() == true) {
             return new View('main/index_admin', ['comments'=>$comments->get_all_record_mail()]);
         } else {
-            return new View('main/index', ['comments'=>$comments->get_all_record_mail()]);
+            //return new View('main/index', ['comments'=>$comments->get_all_record_mail()]);
+            header('Location: '.'/');
         }
 
 
@@ -61,7 +63,8 @@ class MainController extends Controller {
         if (Auth::is_auth() == true) {
             return new View('main/index_admin', ['comments'=>$comments->get_all_record_date()]);
         } else {
-            return new View('main/index', ['comments'=>$comments->get_all_record_date()]);
+            //return new View('main/index', ['comments'=>$comments->get_all_record_date()]);
+            header('Location: '.'/');
         }
 
 
