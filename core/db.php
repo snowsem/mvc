@@ -15,7 +15,7 @@ class DB {
 
 
     public static function run() {
-        echo 'run db class';
+        //echo 'run db class';
         $ini_array = parse_ini_file(CONFIG_PATH.DS."db.ini");
         //var_dump($ini_array);
         self::$link = mysqli_connect ($ini_array['host'],$ini_array['username'],$ini_array['password'],$ini_array['db']);

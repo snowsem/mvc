@@ -31,9 +31,11 @@ function model($model_name) {
 
 require_once CORE_PATH.DS."core.php";
 require_once CORE_PATH.DS."db.php";
+require_once CORE_PATH.DS."auth.php";
 require_once CORE_PATH.DS."router.php";
 
 DB::run();
+Auth::rum();
 Router::run();
 
 #еще не разобрался как в неймспейс добавить модель

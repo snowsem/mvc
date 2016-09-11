@@ -61,3 +61,22 @@
 .form-input_success {
     border-color: #00bd1c;
 }
+.input-ssx {
+    margin: 0;
+    height: 30px;
+    margin-top: 6px;
+    padding: 5px;
+    background: #333;
+    color: #fefefe;
+    border-color: #444444;
+}
+.input-ssx-btn {
+    margin: 0;
+    height: 30px;
+    margin-top: 6px;
+    padding: 5px;
+    padding-top: 3px;
+    background: #333;
+    color: #a7a7a7;
+    border-color: #444444;
+}

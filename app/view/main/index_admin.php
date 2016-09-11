@@ -87,44 +87,28 @@
     <div class="container">
         <div class="navbar-header">
             <a href="/" class="navbar-brand">Обратная связь</a>
+
         </div>
-        <form class="navbar-form" role="login" method="post" action="/auth/login">
-            <div class="col-sm-1 col-md-2  navbar-right">
-                <div class="input-group">
-                    <button type="submit" class="btn btn-primary input-ssx-btn ">Войти</button>
-                </div>
-
-            </div>
-            <div class="col-sm-1 col-md-2  navbar-right">
-                <div class="input-group">
-                    <input type="text" class="form-control input-ssx" placeholder="Пароль" name="password">
-                </div>
-            </div>
-            <div class="col-sm-1 col-md-2  navbar-right">
-            <div class="input-group">
-                <input type="text" class="form-control   input-ssx" placeholder="Логин" name="username">
-            </div>
-        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Личный кабинет <b class="caret"></b></a>
+                <ul class="dropdown-menu">
 
 
+                    <li class="dropdown-header"><?php print Auth::get("username")?></li>
+
+                    <li><a href="/auth/logout">Выход</a></li>
+                </ul>
+            </li>
 
 
-        </form>
+        </ul>
 
     </div>
 </div>
 
 
 <div class="container">
-    <ul class="nav nav-pills">
-
-
-        <li  <?php if(Router::$action=='index'){ print 'class="active"';}?> role="presentation" ><a href="/">Стандарт</a></li>
-        <li  <?php if(Router::$action=='by_author'){ print 'class="active"';}?> role="presentation" ><a href="/main/by_author">По автору</a></li>
-        <li  <?php if(Router::$action=='by_date'){ print 'class="active"';}?> role="presentation" ><a href="/main/by_date">По дате</a></li>
-        <li  <?php if(Router::$action=='by_mail'){ print 'class="active"';}?> role="presentation" ><a href="/main/by_mail">По адресу</a></li>
-
-    </ul>
     <ul class="comments-list">
         <?php
 
