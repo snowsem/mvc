@@ -71,6 +71,8 @@ class Router
         else
         {
             //Здесь тоже нужно добавить обработку ошибок
+            Core::error_load_action($action);
+
         }
     }
 }

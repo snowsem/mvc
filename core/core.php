@@ -18,5 +18,13 @@ class Core {
     public static function error_load_controller($controller_name = '') {
         exit("Не найден файл контроолера "  . $controller_name);
     }
+    public static function error_load_action($action_name = '') {
+        exit("Не найден метод "  . $action_name);
+    }
+    public static function error_load_view($view_name = '') {
+        exit("Не найден шаблон "  . $view_name);
+    }
+
+
 
 }

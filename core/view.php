@@ -28,8 +28,8 @@ class View
 
             } else {
 
-                echo $file;
-                exit('Шаблон ' . $template . ' не найден!');
+                Core::error_load_view($template);
+
 
             }
 

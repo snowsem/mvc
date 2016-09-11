@@ -66,13 +66,13 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="well bs-component background-white">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" method="post" action="/comment/add">
                         <fieldset>
                             <legend><h4>Оставить отзыв</h4></legend>
                             <div class="form-group">
 
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control input-sm" id="name" placeholder="Имя">
+                                    <input type="text" class="form-control input-sm" id="name" name="name" placeholder="Имя">
                                 </div>
                             </div>
                             <div class="form-group">
