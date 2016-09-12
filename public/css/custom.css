@@ -81,5 +81,12 @@
     border-color: #444444;
 }
 #pre {
-    display: none;
+     display: none;
+     max-height: 350px;
+     max-width: 240px;
+ }
+.resize_img {
+
+    max-height: 350px;
+    max-width: 240px;
 }

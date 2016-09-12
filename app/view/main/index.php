@@ -139,7 +139,7 @@
             //var_dump($comments);
             foreach ($comments as $c) {
                 $admin = ($c['c_admin'] == 1 ? ' | Изменен администратором' : '');
-                $img = ($c['c_img'] !=NULL ? '<img src="data:image/jpeg;base64,'.base64_encode( $c['c_img'] ).'"/>':'');
+                $img = ($c['c_img'] !=NULL ? '<img class="resize_img",, src="data:image/jpeg;base64,'.base64_encode( $c['c_img'] ).'"/>':'');
 
                 echo '<li class="comment">
             <a class="pull-left" href="#">
@@ -273,8 +273,7 @@
             if (input.files[0].type.match('image.*')) {
                 console.log("is an image");
                 reader.onload = function (e) {
-                    $('#pre').attr('src', e.target.result).width(100)
-                        .height(100).show();
+                    $('#pre').attr('src', e.target.result).show();
                 };
 
                 reader.readAsDataURL(input.files[0]);

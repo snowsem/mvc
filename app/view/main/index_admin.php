@@ -122,6 +122,7 @@
             foreach ($comments as $c) {
                 $pub = ($c['c_published'] == 1 ? 'Опубликован' : 'Не опубликован');
                 $admin = ($c['c_admin'] == 1 ? ' | Изменен администратором' : '');
+                $img = ($c['c_img'] !=NULL ? '<img class="resize_img",  src="data:image/jpeg;base64,'.base64_encode( $c['c_img'] ).'"/>':'');
 
 
                 echo '<li class="comment">
@@ -138,6 +139,7 @@
                     
                 </div>
                 <p>'.$c['c_text'].'</p>
+                <p>'.$img.'</p>
             </div>
         </li>';
             }
@@ -152,61 +154,139 @@
         </ul>
 
 
-        <!-- Form
-        ================================================== -->
+    <!-- Form
+   ================================================== -->
 
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="well bs-component background-white">
-                    <form id="form" class="form-horizontal" method="post" action="/comment/create">
-                        <fieldset>
-                            <legend><h4>Оставить отзыв</h4></legend>
-                            <p class="js-form-message"></p>
-                            <div class="form-group">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="well bs-component background-white">
+                <form id="form" class="form-horizontal" enctype="multipart/form-data" method="post" action="/comment/create">
+                    <fieldset>
+                        <legend><h4>Оставить отзыв</h4></legend>
+                        <p class="js-form-message"></p>
+                        <div class="form-group">
 
-                                <div class="col-lg-10">
-                                    <input type="text" class="form-control input-sm" id="name" name="name" placeholder="Имя">
-                                </div>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control input-sm" id="inputName" name="name" placeholder="Имя">
                             </div>
-                            <div class="form-group">
+                        </div>
+                        <div class="form-group">
 
-                                <div class="col-lg-10">
-                                    <input type="text" class="form-control input-sm" id="inputEmail" name="email" placeholder="E-mail">
-                                </div>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control input-sm" id="inputEmail" name="email" placeholder="E-mail">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+
+                            <div class="col-lg-10">
+                                <textarea class="form-control " rows="3" id="inputText" name="text" placeholder="Текст сообщения"></textarea>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+
+                            <div class="col-lg-7">
+                                <input name="image" id="fileInput" type="file" /><br>
+                                <img id="pre" src="#" alt="pre" />
                             </div>
 
-                            <div class="form-group">
+
+                        </div>
 
 
-                                <div class="col-lg-10">
-                                    <textarea class="form-control " rows="3" id="text" name="text" placeholder="Текст сообщения"></textarea>
-                                    <span class="help-block"></span>
-                                </div>
+                        <div class="form-group">
+
+                            <div class="col-lg-10">
+                                <!-- Button trigger modal -->
+
+                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Предварительный просмотр</button>
+                                <button type="submit" class="btn btn-primary">Отправить</button>
                             </div>
-
-
-                            <div class="form-group">
-                                <div class="col-lg-10">
-                                    <button type="reset" class="btn btn-default">Предварительный просмотр</button>
-                                    <button type="submit" class="btn btn-primary">Отправить</button>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
+                        </div>
+                    </fieldset>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
 
 
 
 
-    <!-- Dialog
-    ================================================== -->
+<!-- Dialog
+================================================== -->
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Предварительный просмотр</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="comments-list">
+                    <li class="comment">
+                        <a class="pull-left" href="#">
+                            <img class="avatar" src="/public/user_3.jpg" alt="avatar">
+                        </a>
+                        <div class="comment-body">
+                            <div class="comment-heading">
+                                <h5 class="time c_date"></h5><br>
+                                <h4 class="user c_author"></h4><br>
+                                <span class="c_email"></span>
+
+                            </div>
+                            <p class="c_text"></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            if (input.files[0].type.match('image.*')) {
+                console.log("is an image");
+                reader.onload = function (e) {
+                    $('#pre').attr('src', e.target.result).show();
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                $('#pre').hide();
+
+            }
 
 
+        }
+    }
+    $("#fileInput").change(function(){
+        readURL(this);
+    });
+    $( ".modal" ).on('shown.bs.modal', function(e){
+        console.log('open');
+        $('.modal .modal-body .c_author').html($( "#inputName" ).val());
+        $('.modal .modal-body .c_text').html($( "#inputText" ).val());
+        $('.modal .modal-body .c_email').html($( "#inputEmail" ).val());
 
+        var date = new Date();//Thu Jul 26 2012 15:59:09 GMT+0400 ..
+        var mon = ('0'+(1+date.getMonth())).replace(/.?(\d{2})/,'$1')
+        var a=date.toString().replace(/^[^\s]+\s([^\s]+)\s([^\s]+)\s([^\s]+)\s([^\s]+)\s.*$/ig,'$3-'+mon+'-$2 $4')
 
+        $('.modal .modal-body .c_date').html(a);
+
+    });
+</script>
 
 </body></html>
