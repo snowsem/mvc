@@ -254,6 +254,7 @@
                     
                 </div>
                 <p class="c_text"></p>
+                <p class="c_img"></p>
             </div>
         </li>
                 </ul>
@@ -293,6 +294,7 @@
         $('.modal .modal-body .c_author').html($( "#inputName" ).val());
         $('.modal .modal-body .c_text').html($( "#inputText" ).val());
         $('.modal .modal-body .c_email').html($( "#inputEmail" ).val());
+        $('.modal .modal-body .c_img').html($( "#pre" ));
 
         var date = new Date();//Thu Jul 26 2012 15:59:09 GMT+0400 ..
         var mon = ('0'+(1+date.getMonth())).replace(/.?(\d{2})/,'$1')
