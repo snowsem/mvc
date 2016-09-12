@@ -122,13 +122,13 @@
                         <div class="form-group">
 
                             <div class="col-lg-10">
-                                <input type="text" class="form-control input-sm" id="name" name="name" placeholder="Имя" value=" <?php print $comment['c_author']?>">
+                                <input type="text" class="form-control input-sm" id="name" name="name" placeholder="Имя" value="<?php print $comment['c_author']?>">
                             </div>
                         </div>
                         <div class="form-group">
 
                             <div class="col-lg-10">
-                                <input type="text" class="form-control input-sm" id="inputEmail" name="email" placeholder="E-mail" value=" <?php print $comment['c_email']?>">
+                                <input type="text" class="form-control input-sm" id="inputEmail" name="email" placeholder="E-mail" value="<?php print $comment['c_email']?>">
                             </div>
                         </div>
 
@@ -136,7 +136,7 @@
 
                             <!-- <label for="textArea" class="col-lg-2 control-label">Код</label> !-->
                             <div class="col-lg-10">
-                                <textarea class="form-control " rows="3" id="text" name="text" placeholder="Текст сообщения"> <?php print $comment['c_text']?></textarea>
+                                <textarea class="form-control " rows="3" id="text" name="text" placeholder="Текст сообщения"><?php print $comment['c_text']?></textarea>
 
                             </div>
                         </div>

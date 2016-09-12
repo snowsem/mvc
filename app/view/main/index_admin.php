@@ -121,6 +121,7 @@
             //var_dump($comments);
             foreach ($comments as $c) {
                 $pub = ($c['c_published'] == 1 ? 'Опубликован' : 'Не опубликован');
+                $admin = ($c['c_admin'] == 1 ? ' | Изменен администратором' : '');
 
 
                 echo '<li class="comment">
@@ -129,7 +130,7 @@
             </a>
             <div class="comment-body">
                 <div class="comment-heading">
-                <h5 class="time">'.$c['c_date'].'</h5>  | <span><a href="/comment/edit/'.$c['c_id'].'">Редактировать</a></span> | <span>'.$pub.'</span>
+                <h5 class="time">'.$c['c_date'].'</h5>  | <span><a href="/comment/edit/'.$c['c_id'].'">Редактировать</a></span> | <span>'.$pub.' '.$admin.'</span>
                 
                 <br>
                     <h4 class="user">'.$c['c_author'].'</h4><br>

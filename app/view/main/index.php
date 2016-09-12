@@ -138,6 +138,7 @@
 
             //var_dump($comments);
             foreach ($comments as $c) {
+                $admin = ($c['c_admin'] == 1 ? 'Изменен администратором' : '');
 
                 echo '<li class="comment">
             <a class="pull-left" href="#">
@@ -145,7 +146,7 @@
             </a>
             <div class="comment-body">
                 <div class="comment-heading">
-                <h5 class="time">'.$c['c_date'].'</h5><br>
+                <h5 class="time">'.$c['c_date'].'</h5><span>'.$admin.'</span><br>
                     <h4 class="user">'.$c['c_author'].'</h4><br>
                      <span>'.$c['c_email'].'</span>
                     
@@ -234,12 +235,12 @@
             </a>
             <div class="comment-body">
                 <div class="comment-heading">
-                    <h5 class="time c_date">'.$c['c_date'].'</h5><br>
-                    <h4 class="user c_author">'.$c['c_author'].'</h4><br>
-                    <span class="c_email">'.$c['c_email'].'</span>
+                    <h5 class="time c_date"></h5><br>
+                    <h4 class="user c_author"></h4><br>
+                    <span class="c_email"></span>
                     
                 </div>
-                <p class="c_text">'.$c['c_text'].'</p>
+                <p class="c_text"></p>
             </div>
         </li>
                 </ul>

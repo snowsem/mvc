@@ -93,14 +93,28 @@ class CommentModel extends Model {
 
     }
     public static function edit() {
+
+
+        //пока отсутсвуют проверки, но для теста хватит
         var_dump(Request::$post_params);
+        $c_id = Request::$post_params->c_id;
         $c_author = Request::$post_params->name;
         $c_text = Request::$post_params->text;
-        $c_id = Request::$post_params->c_id;
         $c_email = Request::$post_params->email;
         $c_published = Request::$post_params->c_published;
+
+        $sql = "SELECT * FROM comments WHERE c_id = $c_id LIMIT 1 ";
+        $result = DB::query($sql);
+        $u = mysqli_fetch_assoc($result);
+        $adm = 0;
+        if(($u['c_author'] != $c_author) or ($u['c_text'] != $c_text) or ($u['c_email'] != $c_email)) {
+            $adm = 1;
+        }
+
+
+
         $c_date =  date("Y-m-d H:i:s");
-        $sql = "UPDATE comments SET c_author ='$c_author', c_text='$c_text', c_email='$c_email',c_date='$c_date',c_published='$c_published' WHERE c_id=$c_id";
+        $sql = "UPDATE comments SET c_author ='$c_author', c_text='$c_text', c_email='$c_email',c_date='$c_date',c_published='$c_published',c_admin='$adm' WHERE c_id=$c_id";
         var_dump( DB::query($sql));
     }
 
