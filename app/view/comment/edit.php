@@ -165,7 +165,7 @@
                         <div class="form-group">
                             <div class="col-lg-10 col-lg-offset-2">
                                 <input type="hidden" name="c_id" value="<?php print $comment['c_id']?>">
-                                <button type="reset" class="btn btn-default">Предварительный просмотр</button>
+                                
                                 <button type="submit" class="btn btn-primary">Отправить</button>
                             </div>
                         </div>
