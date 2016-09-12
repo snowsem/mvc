@@ -27,6 +27,7 @@
 
     <script>
         $(document).ready(function() {
+
             $('form button[type="submit"]').on('click', function () {
 
                 $("#form").validate({
@@ -76,7 +77,12 @@
 
                 //$(this).parents('form').submit();
             });
+
+
         });
+
+
+
     </script>
 
 
@@ -172,7 +178,7 @@
                             <div class="form-group">
 
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control input-sm" id="name" name="name" placeholder="Имя">
+                                    <input type="text" class="form-control input-sm" id="inputName" name="name" placeholder="Имя">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -186,7 +192,7 @@
 
                                 <!-- <label for="textArea" class="col-lg-2 control-label">Код</label> !-->
                                 <div class="col-lg-10">
-                                    <textarea class="form-control " rows="3" id="text" name="text" placeholder="Текст сообщения"></textarea>
+                                    <textarea class="form-control " rows="3" id="inputText" name="text" placeholder="Текст сообщения"></textarea>
                                     <span class="help-block"></span>
                                 </div>
                             </div>
@@ -194,7 +200,9 @@
 
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
-                                    <button type="reset" class="btn btn-default">Предварительный просмотр</button>
+                                    <!-- Button trigger modal -->
+
+                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Предварительный просмотр</button>
                                     <button type="submit" class="btn btn-primary">Отправить</button>
                                 </div>
                             </div>
@@ -211,9 +219,52 @@
 
     <!-- Dialog
     ================================================== -->
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Предварительный просмотр</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="comments-list">
+                    <li class="comment">
+            <a class="pull-left" href="#">
+                <img class="avatar" src="/public/user_3.jpg" alt="avatar">
+            </a>
+            <div class="comment-body">
+                <div class="comment-heading">
+                    <h5 class="time c_date">'.$c['c_date'].'</h5><br>
+                    <h4 class="user c_author">'.$c['c_author'].'</h4><br>
+                    <span class="c_email">'.$c['c_email'].'</span>
+                    
+                </div>
+                <p class="c_text">'.$c['c_text'].'</p>
+            </div>
+        </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
 
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $( ".modal" ).on('shown.bs.modal', function(e){
+        console.log('open');
+        $('.modal .modal-body .c_author').html($( "#inputName" ).val());
+        $('.modal .modal-body .c_text').html($( "#inputText" ).val());
+        $('.modal .modal-body .c_email').html($( "#inputEmail" ).val());
 
+        var date = new Date();//Thu Jul 26 2012 15:59:09 GMT+0400 ..
+        var mon = ('0'+(1+date.getMonth())).replace(/.?(\d{2})/,'$1')
+        var a=date.toString().replace(/^[^\s]+\s([^\s]+)\s([^\s]+)\s([^\s]+)\s([^\s]+)\s.*$/ig,'$3-'+mon+'-$2 $4')
 
+        $('.modal .modal-body .c_date').html(a);
 
+    });
+</script>
 
 </body></html>
