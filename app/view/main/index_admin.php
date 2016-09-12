@@ -177,7 +177,7 @@
 
                             <div class="form-group">
 
-                                <!-- <label for="textArea" class="col-lg-2 control-label">Код</label> !-->
+
                                 <div class="col-lg-10">
                                     <textarea class="form-control " rows="3" id="text" name="text" placeholder="Текст сообщения"></textarea>
                                     <span class="help-block"></span>
@@ -186,7 +186,7 @@
 
 
                             <div class="form-group">
-                                <div class="col-lg-10 col-lg-offset-2">
+                                <div class="col-lg-10">
                                     <button type="reset" class="btn btn-default">Предварительный просмотр</button>
                                     <button type="submit" class="btn btn-primary">Отправить</button>
                                 </div>

@@ -138,7 +138,8 @@
 
             //var_dump($comments);
             foreach ($comments as $c) {
-                $admin = ($c['c_admin'] == 1 ? 'Изменен администратором' : '');
+                $admin = ($c['c_admin'] == 1 ? ' | Изменен администратором' : '');
+                $img = ($c['c_img'] !=NULL ? '<img src="data:image/jpeg;base64,'.base64_encode( $c['c_img'] ).'"/>':'');
 
                 echo '<li class="comment">
             <a class="pull-left" href="#">
@@ -146,12 +147,13 @@
             </a>
             <div class="comment-body">
                 <div class="comment-heading">
-                <h5 class="time">'.$c['c_date'].'</h5><span>'.$admin.'</span><br>
+                <h5 class="time">'.$c['c_date'].'</h5><span>' .$admin.'</span><br>
                     <h4 class="user">'.$c['c_author'].'</h4><br>
                      <span>'.$c['c_email'].'</span>
                     
                 </div>
                 <p>'.$c['c_text'].'</p>
+                 <p>'.$img.'</p>
             </div>
         </li>';
             }
@@ -172,7 +174,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="well bs-component background-white">
-                    <form id="form" class="form-horizontal" method="post" action="/comment/create">
+                    <form id="form" class="form-horizontal" enctype="multipart/form-data" method="post" action="/comment/create">
                         <fieldset>
                             <legend><h4>Оставить отзыв</h4></legend>
                             <p class="js-form-message"></p>
@@ -191,16 +193,27 @@
 
                             <div class="form-group">
 
-                                <!-- <label for="textArea" class="col-lg-2 control-label">Код</label> !-->
+
                                 <div class="col-lg-10">
                                     <textarea class="form-control " rows="3" id="inputText" name="text" placeholder="Текст сообщения"></textarea>
                                     <span class="help-block"></span>
                                 </div>
                             </div>
+                            <div class="form-group">
+
+
+                                <div class="col-lg-7">
+                                    <input name="image" id="fileInput" type="file" /><br>
+                                    <img id="pre" src="#" alt="pre" />
+                                </div>
+
+
+                            </div>
 
 
                             <div class="form-group">
-                                <div class="col-lg-10 col-lg-offset-2">
+
+                                <div class="col-lg-10">
                                     <!-- Button trigger modal -->
 
                                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Предварительный просмотр</button>
@@ -253,6 +266,29 @@
     </div>
 </div>
 <script>
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            if (input.files[0].type.match('image.*')) {
+                console.log("is an image");
+                reader.onload = function (e) {
+                    $('#pre').attr('src', e.target.result).width(100)
+                        .height(100).show();
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                $('#pre').hide();
+
+            }
+
+
+        }
+    }
+    $("#fileInput").change(function(){
+        readURL(this);
+    });
     $( ".modal" ).on('shown.bs.modal', function(e){
         console.log('open');
         $('.modal .modal-body .c_author').html($( "#inputName" ).val());

@@ -84,10 +84,12 @@ class CommentModel extends Model {
     public function create($params) {
         $c_author = $params['c_author'];
         $c_text = $params['c_text'];
-        $c_email = $params['c_email'];
+        $c_img = $params['c_img'];
+        $c_img_name = $params['c_img_name'];
+
         $c_email = $params['c_email'];
         $c_date =  date("Y-m-d H:i:s");
-        $query = "INSERT INTO comments (c_author, c_email, c_text, c_date, c_published) VALUES ('$c_author', '$c_email', '$c_text', '$c_date', 0)";
+        $query = "INSERT INTO comments (c_author, c_email, c_text, c_date, c_published, c_img, c_img_name) VALUES ('$c_author', '$c_email', '$c_text', '$c_date', 0, '$c_img', '$c_img_name')";
         return DB::query($query);
 
 

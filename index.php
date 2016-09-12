@@ -13,6 +13,7 @@ define ('DS', DIRECTORY_SEPARATOR);
 $core_path = realpath(dirname(__FILE__) . DS);
 
 define('APP_PATH',  $core_path.'/app');
+define('PUBLIC_PATH',  $core_path.'/public');
 define('MODEL_PATH',  $core_path.'/app/model');
 define('CONFIG_PATH', $core_path.'/config');
 
